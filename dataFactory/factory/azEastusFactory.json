@@ -1,0 +1,15 @@
+{
+	"name": "azEastusFactory",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4675f56d-de5f-48d5-995f-ca94d5704dc5",
+		"tenantId": "ee3b053d-ecb9-4f0a-b8bd-7a7dc599b234"
+	}
+}
