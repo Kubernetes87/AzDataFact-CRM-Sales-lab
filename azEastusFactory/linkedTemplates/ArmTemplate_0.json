@@ -33,16 +33,6 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/onPremtoAzureIntegrationRuntime')]",
-			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "SelfHosted",
-				"typeProperties": {}
-			},
-			"dependsOn": []
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -60,28 +50,14 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/FileServer')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/onPremtoAzureIntegrationRuntime')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "FileServer",
-				"typeProperties": {
-					"host": "[parameters('FileServer_properties_typeProperties_host')]",
-					"userId": "[parameters('FileServer_properties_typeProperties_userId')]",
-					"password": {
-						"type": "SecureString",
-						"value": "[parameters('FileServer_password')]"
-					}
-				},
-				"connectVia": {
-					"referenceName": "onPremtoAzureIntegrationRuntime",
-					"type": "IntegrationRuntimeReference"
-				}
+				"type": "SelfHosted",
+				"typeProperties": {}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/onPremtoAzureIntegrationRuntime')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Sink')]",
@@ -111,59 +87,27 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/accountSourceDataset')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
+			"name": "[concat(parameters('factoryName'), '/FileServer')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"linkedServiceName": {
-					"referenceName": "FileServer",
-					"type": "LinkedServiceReference"
-				},
 				"annotations": [],
-				"type": "DelimitedText",
+				"type": "FileServer",
 				"typeProperties": {
-					"location": {
-						"type": "FileServerLocation",
-						"fileName": "accounts.csv"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "account",
-						"type": "String"
-					},
-					{
-						"name": "sector",
-						"type": "String"
-					},
-					{
-						"name": "year_established",
-						"type": "String"
-					},
-					{
-						"name": "revenue",
-						"type": "String"
-					},
-					{
-						"name": "employees",
-						"type": "String"
-					},
-					{
-						"name": "office_location",
-						"type": "String"
-					},
-					{
-						"name": "subsidiary_of",
-						"type": "String"
+					"host": "[parameters('FileServer_properties_typeProperties_host')]",
+					"userId": "[parameters('FileServer_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('FileServer_password')]"
 					}
-				]
+				},
+				"connectVia": {
+					"referenceName": "onPremtoAzureIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/FileServer')]"
+				"[concat(variables('factoryId'), '/integrationRuntimes/onPremtoAzureIntegrationRuntime')]"
 			]
 		},
 		{
@@ -338,6 +282,62 @@
 					},
 					{
 						"name": "regional_office",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/FileServer')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/accountSourceDataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "FileServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "FileServerLocation",
+						"fileName": "accounts.csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "account",
+						"type": "String"
+					},
+					{
+						"name": "sector",
+						"type": "String"
+					},
+					{
+						"name": "year_established",
+						"type": "String"
+					},
+					{
+						"name": "revenue",
+						"type": "String"
+					},
+					{
+						"name": "employees",
+						"type": "String"
+					},
+					{
+						"name": "office_location",
+						"type": "String"
+					},
+					{
+						"name": "subsidiary_of",
 						"type": "String"
 					}
 				]
@@ -704,7 +704,7 @@
 							"headers": {},
 							"url": "https://prod-25.eastus.logic.azure.com:443/workflows/3fa7ebde359d400f9f66441cbfc2f628/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=CLLFJAPAuW-1n67q2CFHaFpoGewwKHCBn4XsAf1VhI0",
 							"body": {
-								"value": "{\n    \"pipelineName\" : \"@{pipeline().Pipeline}\",\n    \"status\" : \"Succeeded\",\n    \"runid\" : \"@{pipeline().RunId}\",\n    \"time\" : @{utcNow()}\n\n}",
+								"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"status\": \"Succeeded\",\n  \"runid\": \"@{pipeline().RunId}\",\n  \"time\": \"@{utcNow()}\"\n}",
 								"type": "Expression"
 							}
 						}
@@ -733,7 +733,7 @@
 							"headers": {},
 							"url": "https://prod-25.eastus.logic.azure.com:443/workflows/3fa7ebde359d400f9f66441cbfc2f628/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=CLLFJAPAuW-1n67q2CFHaFpoGewwKHCBn4XsAf1VhI0",
 							"body": {
-								"value": "{\n    \"pipelineName\" : \"@{pipeline().Pipeline}\",\n    \"status\" : \"Failed\",\n    \"runid\" : \"@{pipeline().RunId}\",\n    \"time\" : @{utcNow()}\n\n}",
+								"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"status\": \"Failed\",\n  \"runid\": \"@{pipeline().RunId}\",\n  \"time\": \"@{utcNow()}\"\n}",
 								"type": "Expression"
 							}
 						}
@@ -774,8 +774,7 @@
 					"recurrence": {
 						"frequency": "Hour",
 						"interval": 15,
-						"startTime": "2026-08-21T06:20:00",
-						"endTime": "2026-08-22T06:59:00",
+						"startTime": "2026-08-20T02:13:00",
 						"timeZone": "Central Standard Time"
 					}
 				}

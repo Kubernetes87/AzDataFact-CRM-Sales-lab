@@ -5,20 +5,20 @@
 		"factoryName": {
 			"value": "azEastusFactory"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
 		"FileServer_password": {
 			"value": ""
 		},
-		"AzureDataLakeStorage1_accountKey": {
-			"value": ""
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://azureeastusst.dfs.core.windows.net/"
 		},
 		"FileServer_properties_typeProperties_host": {
 			"value": "C:\\Users\\Umera\\Training\\CRM+Sales+Opportunities"
 		},
 		"FileServer_properties_typeProperties_userId": {
 			"value": "LenovoFlex\\Umera"
-		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://azureeastusst.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""
