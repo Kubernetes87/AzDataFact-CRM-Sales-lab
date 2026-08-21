@@ -1,0 +1,25 @@
+{
+	"name": "trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "AzUSEastPipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 15,
+				"startTime": "2026-08-21T06:20:00",
+				"endTime": "2026-08-22T06:59:00",
+				"timeZone": "Central Standard Time"
+			}
+		}
+	}
+}
