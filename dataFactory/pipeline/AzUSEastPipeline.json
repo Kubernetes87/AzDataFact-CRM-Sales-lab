@@ -343,7 +343,7 @@
 					"method": "POST",
 					"url": "https://prod-25.eastus.logic.azure.com:443/workflows/3fa7ebde359d400f9f66441cbfc2f628/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=CLLFJAPAuW-1n67q2CFHaFpoGewwKHCBn4XsAf1VhI0",
 					"body": {
-						"value": "{ \n  \"pipelineName\" : \"@{pipeline().Pipeline}\", \n  \"status\" : \"Succeeded\", \n  \"runid\" : \"@{pipeline().RunId}\", \n  \"time\" : \"@{utcNow()}\" \n}",
+						"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"status\": \"Succeeded\",\n  \"runid\": \"@{pipeline().RunId}\",\n  \"time\": \"@{utcNow()}\"\n}",
 						"type": "Expression"
 					}
 				}
@@ -371,7 +371,7 @@
 					"method": "POST",
 					"url": "https://prod-25.eastus.logic.azure.com:443/workflows/3fa7ebde359d400f9f66441cbfc2f628/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=CLLFJAPAuW-1n67q2CFHaFpoGewwKHCBn4XsAf1VhI0",
 					"body": {
-						"value": "{ \n  \"pipelineName\" : \"@{pipeline().Pipeline}\", \n  \"status\" : \"Failed\", \n  \"runid\" : \"@{pipeline().RunId}\", \n  \"time\" : \"@{utcNow()}\" \n}",
+						"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"status\": \"Failed\",\n  \"runid\": \"@{pipeline().RunId}\",\n  \"time\": \"@{utcNow()}\"\n}",
 						"type": "Expression"
 					}
 				}
