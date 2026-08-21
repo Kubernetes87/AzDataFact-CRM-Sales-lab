@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "azEastusFactory"
+		},
+		"FileServer_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"FileServer_properties_typeProperties_host": {
+			"value": "C:\\Users\\Umera\\Training\\CRM+Sales+Opportunities"
+		},
+		"FileServer_properties_typeProperties_userId": {
+			"value": "LenovoFlex\\Umera"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://azureeastusst.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
