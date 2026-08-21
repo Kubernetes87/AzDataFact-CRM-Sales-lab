@@ -1,0 +1,17 @@
+{
+	"name": "FileServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Users\\Umera\\Training\\CRM+Sales+Opportunities",
+			"userId": "LenovoFlex\\Umera",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzMDM4NGU2My00OTAyLTRmMTUtODJkMy04MWU5ZmIwN2ZlOTAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "onPremtoAzureIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
